@@ -1,0 +1,41 @@
+*{
+    background-color: rgb(223, 181, 181);
+
+}
+
+#root{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 120px;
+}
+
+
+.goal{
+    display: flex;
+    padding: 10px;
+    box-shadow: 0px 0px 4px 0px rgb(0 0 0 / 20%)
+}
+
+.todo__title{
+    text-align: center;
+    color: #fff;
+}
+
+.goal__content{
+    text-align: left;
+    padding: 4px 0 0 7px;
+    font-style: italic;
+    font-size: 16px;
+    color: rgb(54, 52, 207);
+}
+
+.goal-exit {
+    opacity: 1;
+}
+.goal-exit-active {
+    transform:translateY(-150px);
+    transition: all 1000ms ease-in;
+}
+
