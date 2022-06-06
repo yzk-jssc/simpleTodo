@@ -1,9 +1,13 @@
-import React from "react";
-import Todoitem from "./TodoItem";
+import { FunctionComponent, useContext } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { TodoContext } from "./context/context";
+import TodoItem from './TodoItem'
 
-const Todolist = ({ goals, handleToggle, removeTask }) => {
-    
+interface TodoListProps {
+}
+ 
+const TodoList: FunctionComponent<TodoListProps> = () => {
+    const {goals} = useContext(TodoContext)
     return (
         <div>
             <TransitionGroup>
@@ -13,16 +17,12 @@ const Todolist = ({ goals, handleToggle, removeTask }) => {
                         timeout = {500}  
                         classNames = 'goal'  
                     >
-                        <Todoitem
-                            goal={goal}
-                            handleToggle={handleToggle}
-                            removeTask={removeTask}
-                        />
+                        <TodoItem goal={goal}/>
                     </CSSTransition>
                 ))}
             </TransitionGroup>
         </div>
-    );
-};
-
-export default Todolist;
+     );
+}
+ 
+export default TodoList;
