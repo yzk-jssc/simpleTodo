@@ -10,8 +10,7 @@ export interface TodoState {
     goals: goalItem[];
     handleToggle:(e:ChangeEvent<HTMLInputElement>,id:number)=>void;
     removeTask: (id:number)=>void
-    complete:boolean;
-
+    completedGoals:goalItem[];
 }
 
 export interface TodoCheckboxState{

@@ -1,8 +1,7 @@
 import React, { ChangeEvent, FunctionComponent, useState } from 'react'
-import { idText } from 'typescript';
 import { TodoContext } from './context/context';
-import TodoForm from './TodoForm';
-import TodoList from './TodoList';
+import TodoForm from './items/TodoForm';
+import TodoList from './items/TodoList';
 import { goalItem } from './types/types';
 
 interface TodoMainProps {
@@ -12,8 +11,8 @@ interface TodoMainProps {
 const TodoMain: FunctionComponent<TodoMainProps> = () => {
 
     const [goals, setGoals] = useState<goalItem[]>([]);
-    const [complete, setComplete] = useState<boolean>(false)
-    
+    const [completedGoals, setCompletedGoals] = useState<goalItem[]>([])
+
     const addGoal = (userInput:string) =>{
         
         if(userInput){
@@ -26,19 +25,21 @@ const TodoMain: FunctionComponent<TodoMainProps> = () => {
             
             setGoals([newGoal, ...goals])
         }
+        
     }
 
     const completeGoal =(e:ChangeEvent<HTMLInputElement>, id?:number)=>{
 
+
         goals.map(goal=>{
             if(goal.id === id){
                 goal.complete = !goal.complete
+                
             }
-        console.log(goal);
-
-            return goal
-
+            
         })
+
+        setCompletedGoals(goals.filter(goal=>goal.complete))
         
     }
 
@@ -52,9 +53,9 @@ const TodoMain: FunctionComponent<TodoMainProps> = () => {
     return (
         <TodoContext.Provider value={{
             goals,
-            complete,
             handleToggle:completeGoal,
             removeTask,
+            completedGoals,
         }}>
             <TodoForm addTask={addGoal}/>
             <TodoList/>

@@ -3,9 +3,9 @@ import { TodoState } from "../types/types";
 
 const defaultTodoState: TodoState = {
     goals: [],
-    complete:false,
     handleToggle:()=>{},
     removeTask:()=>{},
+    completedGoals:[],
 }
 
 
